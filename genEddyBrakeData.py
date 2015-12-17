@@ -19,7 +19,8 @@ for i in range(len(df)):
   try:
     i2rDf = pd.read_csv('./export/{}_q.csv'.format(loadCaseName))
     tfCol = i2rDf.columns[-1]
-    q = i2rDf[i2rDf.columns[-1]].mean()
+    q_mean = i2rDf[i2rDf.columns[-1]].mean()
+    q_max = i2rDf[i2rDf.columns[-1]].max()
 
   except:
     q = None
@@ -27,7 +28,8 @@ for i in range(len(df)):
   df.loc[i,'F_drag'] = fDrag
   df.loc[i,'F_lift'] = fLift
 
-  df.loc[i,'dT_ibeamSurf/dt'] = q
+  df.loc[i,'q_ibeam_surface_mean'] = q_mean
+  df.loc[i,'q_ibeam_surface_max'] = q_max
 
 
 df.to_csv('./export/eddyBrakeData.csv')
