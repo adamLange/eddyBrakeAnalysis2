@@ -9,8 +9,8 @@ for i in range(len(df)):
   loadCaseName = str(int(df.loc[i,'name']))
   try:
     forceDf = pd.read_csv('./export/{}.csv'.format(loadCaseName))
-    fLift = forceDf.iloc[-1]['Force1.Force_x [newton]']
-    fDrag = forceDf.iloc[-1]['Force1.Force_y [newton]']
+    fDrag = forceDf.iloc[-1]['Force1.Force_x [newton]']
+    fLift = forceDf.iloc[-1]['Force1.Force_y [newton]']
     
   except:
     fDrag = None
